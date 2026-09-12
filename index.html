@@ -1,1 +1,86 @@
-<placeholder>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minecraft setup for Hazel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    :root { --grass:#3d6b32; --grass-deep:#2a4d24; --moss:#d7e8c4; --dirt:#6b4423; --sand:#f3ead7; --paper:#fffcf6; --ink:#1a1714; --muted:#5e574e; --line:#e6dcc8; --gold:#c9842a; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; color:var(--ink); font-family:"DM Sans",system-ui,sans-serif; background-color:#1d2a14; background-image:linear-gradient(180deg,rgba(20,28,12,.28),rgba(12,16,8,.55)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Crect width='160' height='32' fill='%2357a32e'/%3E%3Crect y='8' width='160' height='8' fill='%236bb83a' opacity='.35'/%3E%3Crect y='32' width='160' height='128' fill='%23805a36'/%3E%3Crect y='32' width='40' height='40' fill='%236f4b2c'/%3E%3Crect x='80' y='32' width='40' height='40' fill='%23755332'/%3E%3Crect x='40' y='72' width='40' height='40' fill='%23966a3e'/%3E%3Crect x='120' y='72' width='40' height='40' fill='%23684728'/%3E%3Crect y='112' width='40' height='48' fill='%237a5230'/%3E%3Crect x='80' y='112' width='40' height='48' fill='%238c6038'/%3E%3C/svg%3E"); background-size:cover,180px 180px; background-attachment:fixed; }
+    .page { max-width:760px; margin:28px auto 64px; padding:0 16px; }
+    .hero { position:relative; overflow:hidden; background:var(--paper); border:3px solid #1a1714; box-shadow:8px 8px 0 #1a1714; padding:28px 28px 24px; margin-bottom:22px; }
+    .creeper { position:absolute; right:-8px; top:18px; width:min(42vw,220px); height:auto; image-rendering:pixelated; filter:drop-shadow(6px 6px 0 rgba(26,23,20,.18)); pointer-events:none; }
+    .hero-copy { position:relative; z-index:1; max-width:28rem; }
+    .kicker { display:inline-block; background:var(--moss); border:2px solid #1a1714; padding:4px 10px; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+    h1 { font-family:Fraunces,Georgia,serif; font-size:clamp(32px,7vw,48px); line-height:1.05; margin:14px 0 10px; }
+    .lede { margin:0; color:var(--muted); font-size:18px; }
+    .toc { display:grid; gap:8px; margin-top:22px; }
+    .toc a { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink); background:var(--sand); border:2px solid #1a1714; padding:10px 12px; font-weight:600; }
+    .toc a:hover { background:var(--moss); }
+    .n { flex:0 0 28px; height:28px; display:grid; place-items:center; background:var(--grass); color:#fff; font-size:13px; font-weight:700; }
+    .step { background:var(--paper); border:3px solid #1a1714; box-shadow:6px 6px 0 #1a1714; padding:22px 22px 18px; margin:18px 0; }
+    .step.buy { background:linear-gradient(#f7ffe9,var(--paper) 42%); }
+    .step h2 { font-family:Fraunces,Georgia,serif; font-size:26px; margin:0 0 12px; display:flex; align-items:baseline; gap:10px; }
+    .step h2 span { font-family:"DM Sans",sans-serif; font-size:13px; font-weight:700; letter-spacing:.08em; color:var(--grass-deep); }
+    ol,ul { margin:8px 0 0; padding-left:1.2em; } li { margin:8px 0; }
+    a { color:var(--grass-deep); font-weight:600; }
+    .btn { display:inline-block; margin:14px 0 8px; background:var(--grass); color:#fff !important; text-decoration:none; font-weight:700; padding:14px 18px; border:3px solid #1a1714; box-shadow:4px 4px 0 #1a1714; }
+    .btn:hover { background:var(--grass-deep); }
+    .fine { color:var(--muted); font-size:15px; }
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px; }
+    .pill { border:2px solid #1a1714; padding:12px 14px; background:#fff; }
+    .pill strong { display:block; margin-bottom:4px; }
+    .path { border:2px solid #1a1714; padding:14px 14px 12px; background:#fff; }
+    .path h3 { font-family:Fraunces,Georgia,serif; font-size:18px; margin:0 0 8px; }
+    .warn { margin-top:16px; background:#fff6e8; border:2px dashed var(--dirt); padding:12px 14px; }
+    footer { color:#efe7d6; text-align:center; font-size:14px; margin-top:28px; text-shadow:0 1px 0 #000; }
+    @media (max-width:640px) { .hero,.step { padding:18px 16px; } .split { grid-template-columns:1fr; } .creeper { width:88px; } .hero-copy { max-width:none; padding-right:72px; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <svg class="creeper" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="8" height="8" fill="#62b04f"/>
+        <rect x="1" y="2" width="2" height="2" fill="#111"/>
+        <rect x="5" y="2" width="2" height="2" fill="#111"/>
+        <rect x="3" y="4" width="2" height="2" fill="#111"/>
+        <rect x="2" y="5" width="1" height="2" fill="#111"/>
+        <rect x="5" y="5" width="1" height="2" fill="#111"/>
+      </svg>
+      <div class="hero-copy">
+      <div class="kicker">Windows PC · Java Edition</div>
+      <h1>Minecraft setup for Hazel</h1>
+      <p class="lede">Hazel needs her own Microsoft account. Redeem the Java + Bedrock key on <em>her</em> login. You’ll play <strong>Java</strong> together on PCs — not PlayStation.</p>
+      <nav class="toc">
+        <a href="#s1"><span class="n">1</span> Your Microsoft account</a>
+        <a href="#s2"><span class="n">2</span> Create her child account</a>
+        <a href="#s3"><span class="n">3</span> Allow code redemption</a>
+        <a href="#s4"><span class="n">4</span> Buy the ~$20 key</a>
+        <a href="#s5"><span class="n">5</span> Redeem on her account</a>
+        <a href="#s6"><span class="n">6</span> Install Java — basic or fancy</a>
+        <a href="#s7"><span class="n">7</span> Play together (Aternos)</a>
+        <a href="#start"><span class="n">7b</span> Start the server</a>
+        <a href="#s8"><span class="n">8</span> Optional fancy graphics</a>
+      </nav>
+      </div>
+    </header>
+    <section class="step" id="s1"><h2><span>01</span> Your Microsoft account</h2><p>Go to <a href="https://account.microsoft.com">account.microsoft.com</a> and sign in (or create one).</p></section>
+    <section class="step" id="s2"><h2><span>02</span> Create her child account</h2><ol><li>Go to <a href="https://account.microsoft.com/family">account.microsoft.com/family</a></li><li>Click <strong>Add a family member</strong> → <strong>Child</strong></li><li>Use her email, or create one for her</li><li>Use her real birth year</li><li>Accept the invite so she shows under Family members</li></ol></section>
+    <section class="step" id="s3"><h2><span>03</span> Allow her to redeem codes</h2><p>Child accounts often block this until a parent turns it on.</p><ol><li>Still in Family, open her profile</li><li>Allow content suitable for <strong>age 10+</strong></li><li>Allow her to redeem codes / spend if that toggle is there</li></ol></section>
+    <section class="step buy" id="s4"><h2><span>04</span> Buy the game (~$20)</h2><p>Official Microsoft Store price is $29.99. This Eneba listing is the <strong>Java + Bedrock for PC</strong> bundle.</p><a class="btn" href="https://www.eneba.com/us/other-minecraft-java-bedrock-edition-pc-official-website-key-global">Buy the official website key on Eneba</a><ul class="fine"><li>Buy a <strong>key</strong>, not an “account”</li><li>Confirm the offer activates in the United States</li><li>Pick a high-rated seller</li></ul></section>
+    <section class="step" id="s5"><h2><span>05</span> Redeem on her account</h2><ol><li>Sign in as <strong>her</strong> at <a href="https://www.minecraft.net/redeem">minecraft.net/redeem</a></li><li>Paste the 25-character code</li><li>Confirm</li></ol></section>
+    <section class="step" id="s6"><h2><span>06</span> Install Java — pick one</h2><p>Pick <strong>one</strong> column. Fancy replaces Basic — do not install both launchers. Write down her <strong>Minecraft username</strong>.</p><div class="split"><div class="path"><h3>Basic</h3><p class="fine">Official launcher. Easiest.</p><ol><li>Install the <a href="https://www.minecraft.net/en-us/download">Minecraft Launcher</a></li><li>Sign in as <strong>her</strong></li><li>Play <strong>Java Edition</strong></li></ol></div><div class="path"><h3>Fancy</h3><p class="fine"><a href="https://prismlauncher.org/">Prism</a> is a free extra launcher for shaders.</p><ol><li>Install Prism</li><li>Sign in as <strong>her</strong></li><li>Import the pack in <a href="#s8">step 8</a></li></ol></div></div></section>
+    <section class="step" id="s7"><h2><span>07</span> Play together (Aternos)</h2><p>Everyone must be on a <strong>computer, in Java Edition</strong>.</p><p>The world is on <a href="https://aternos.org">Aternos</a>. <a href="#start">Someone with access</a> hits <strong>Start</strong> and waits a minute.</p><ol><li>Use vanilla Java, same version as the server</li><li>Send her Minecraft username for the whitelist</li><li>Multiplayer → Add Server → <strong>rymiwe.aternos.me</strong></li></ol></section>
+    <section class="step" id="start"><h2><span>7b</span> Start the server</h2><p>Ryan already owns the Aternos server. You can start it without his password.</p><ol><li>Create your own free account at <a href="https://aternos.org">aternos.org</a></li><li>Text Ryan that <strong>Aternos username</strong> (not Hazel’s Minecraft name)</li><li>He will grant you Access → Start</li><li>Open the server → <strong>Start</strong> → wait until it is online</li><li>Then she joins <strong>rymiwe.aternos.me</strong> in Java</li></ol></section>
+    <section class="step"><h2><span>!</span> Don’t mix these up</h2><div class="split"><div class="pill"><strong>Do</strong>Redeem as her</div><div class="pill"><strong>Don’t</strong>Redeem on dad’s account</div><div class="pill"><strong>Do</strong>Launch Java Edition</div><div class="pill"><strong>Don’t</strong>Expect a PlayStation to join</div></div><div class="warn">Someone must hit Start on Aternos before anyone can join. Stay on Basic unless the server is changed to match Fancy.</div></section>
+    <section class="step buy" id="s8"><h2><span>08</span> Optional fancy graphics</h2><p>Skip this if official Java is enough.</p><ol><li>Download the pack below</li><li>Prism → Add Instance → Import from zip → pick the <code>.mrpack</code>. Do not unzip it.</li></ol><a class="btn" href="https://drive.google.com/file/d/13O3n-tnAut6fEWma2rbJkSGRf2JkiATz/view?usp=sharing">Download weisspack from Google Drive</a></section>
+    <footer>One kid, one Microsoft account, one key.</footer>
+  </div>
+</body>
+</html>
