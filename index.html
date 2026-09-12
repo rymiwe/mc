@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
   <style>
-    :root { --grass:#3d6b32; --grass-deep:#2a4d24; --moss:#d7e8c4; --dirt:#6b4423; --sand:#f3ead7; --paper:#fffcf6; --ink:#1a1714; --muted:#5e574e; --line:#e6dcc8; --gold:#c9842a; }
+    :root { --grass:#3d6b32; --grass-deep:#2a4d24; --moss:#d7e8c4; --dirt:#6b4423; --sand:#f3ead7; --paper:#fffcf6; --ink:#1a1714; --muted:#5e574e; }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { margin:0; color:var(--ink); font-family:"DM Sans",system-ui,sans-serif; background-color:#1d2a14; background-image:linear-gradient(180deg,rgba(20,28,12,.28),rgba(12,16,8,.55)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Crect width='160' height='32' fill='%2357a32e'/%3E%3Crect y='8' width='160' height='8' fill='%236bb83a' opacity='.35'/%3E%3Crect y='32' width='160' height='128' fill='%23805a36'/%3E%3Crect y='32' width='40' height='40' fill='%236f4b2c'/%3E%3Crect x='80' y='32' width='40' height='40' fill='%23755332'/%3E%3Crect x='40' y='72' width='40' height='40' fill='%23966a3e'/%3E%3Crect x='120' y='72' width='40' height='40' fill='%23684728'/%3E%3Crect y='112' width='40' height='48' fill='%237a5230'/%3E%3Crect x='80' y='112' width='40' height='48' fill='%238c6038'/%3E%3C/svg%3E"); background-size:cover,180px 180px; background-attachment:fixed; }
+    body { margin:0; color:var(--ink); font-family:"DM Sans",system-ui,sans-serif; background-color:#1d2a14; background-image:linear-gradient(180deg,rgba(20,28,12,.28),rgba(12,16,8,.55)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Crect width='160' height='32' fill='%2357a32e'/%3E%3Crect y='32' width='160' height='128' fill='%23805a36'/%3E%3Crect y='32' width='40' height='40' fill='%236f4b2c'/%3E%3Crect x='80' y='32' width='40' height='40' fill='%23755332'/%3E%3C/svg%3E"); background-size:cover,180px 180px; background-attachment:fixed; }
     .page { max-width:760px; margin:28px auto 64px; padding:0 16px; }
     .hero { position:relative; overflow:hidden; background:var(--paper); border:3px solid #1a1714; box-shadow:8px 8px 0 #1a1714; padding:28px 28px 24px; margin-bottom:22px; }
     .creeper { position:absolute; right:18px; top:24px; width:min(34vw,160px); height:auto; image-rendering:pixelated; filter:drop-shadow(6px 6px 0 rgba(26,23,20,.18)); pointer-events:none; }
@@ -38,6 +38,7 @@
     .pill strong { display:block; margin-bottom:4px; }
     .path { border:2px solid #1a1714; padding:14px 14px 12px; background:#fff; }
     .path h3 { font-family:Fraunces,Georgia,serif; font-size:18px; margin:0 0 8px; }
+    .preview { width:100%; height:88px; image-rendering:pixelated; border:2px solid #1a1714; margin:0 0 10px; display:block; }
     .warn { margin-top:16px; background:#fff6e8; border:2px dashed var(--dirt); padding:12px 14px; }
     footer { color:#efe7d6; text-align:center; font-size:14px; margin-top:28px; text-shadow:0 1px 0 #000; }
     @media (max-width:640px) { .hero,.step { padding:18px 16px; } .split { grid-template-columns:1fr; } .creeper { width:88px; right:12px; top:14px; } .hero-copy { max-width:none; padding-right:72px; } }
@@ -82,28 +83,45 @@
     <section class="step buy" id="s4"><h2><span>04</span> Buy the game (~$20)</h2><p>Official Microsoft Store price is $29.99. This Eneba listing is the <strong>Java + Bedrock for PC</strong> bundle.</p><a class="btn" href="https://www.eneba.com/us/other-minecraft-java-bedrock-edition-pc-official-website-key-global">Buy the official website key on Eneba</a><ul class="fine"><li>Buy a <strong>key</strong>, not an “account”</li><li>Confirm the offer activates in the United States</li><li>Pick a high-rated seller</li></ul></section>
     <section class="step" id="s5"><h2><span>05</span> Redeem on her account</h2><ol><li>Sign in as <strong>her</strong> at <a href="https://www.minecraft.net/redeem">minecraft.net/redeem</a></li><li>Paste the 25-character code</li><li>Confirm</li></ol></section>
     <section class="step" id="s6"><h2><span>06</span> Install Java — pick one</h2>
-      <p>Pick <strong>one</strong> column. Fancy replaces Basic — do not install both. Write down her <strong>Minecraft username</strong>.</p>
-      <p class="fine">Ryan will tell you which column to use. Default: <strong>Basic</strong>.</p>
+      <p>Pick <strong>one</strong> column. Do not install both. Write down her <strong>Minecraft username</strong>.</p>
       <div class="split">
         <div class="path">
           <h3>Basic</h3>
-          <p class="fine">Official launcher. Normal look. Works with the current Aternos server.</p>
+          <svg class="preview" viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" aria-label="Default Minecraft look">
+            <rect width="64" height="18" fill="#7ec8e3"/>
+            <rect y="18" width="64" height="8" fill="#5aa63a"/>
+            <rect y="26" width="64" height="6" fill="#8b5a2b"/>
+            <rect x="40" y="10" width="8" height="8" fill="#fff59" opacity=".0"/>
+            <circle cx="50" cy="7" r="4" fill="#ffe066"/>
+            <rect x="12" y="12" width="6" height="12" fill="#6b4423"/>
+            <rect x="8" y="8" width="14" height="8" fill="#3d7a28"/>
+          </svg>
+          <p class="fine">Stock Minecraft. Bright flat blocks, no extra programs. Light on the laptop. Matches the server today. Start here.</p>
           <ol>
             <li>Install the <a href="https://www.minecraft.net/en-us/download">Minecraft Launcher</a></li>
             <li>Sign in as <strong>her</strong></li>
-            <li>Play <strong>Java Edition</strong> (not “Minecraft for Windows”)</li>
-            <li>Launch once</li>
+            <li>Play <strong>Java Edition</strong></li>
           </ol>
         </div>
         <div class="path" id="s8">
           <h3>Fancy</h3>
-          <p class="fine"><a href="https://prismlauncher.org/">Prism</a> is a free extra launcher. Same game, shaders. Only if Ryan says the server matches.</p>
+          <svg class="preview" viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" aria-label="Shader look approximation">
+            <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3d6b"/><stop offset="1" stop-color="#e39a4a"/></linearGradient>
+            <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f6b32"/><stop offset="1" stop-color="#0d2a14"/></linearGradient></defs>
+            <rect width="64" height="20" fill="url(#sky)"/>
+            <rect y="20" width="64" height="12" fill="url(#g)"/>
+            <polygon points="0,20 18,8 36,20" fill="#1a3320"/>
+            <polygon points="24,20 48,6 64,20" fill="#244028"/>
+            <rect x="10" y="14" width="5" height="10" fill="#3a2414"/>
+            <rect x="6" y="10" width="13" height="7" fill="#16381c"/>
+            <rect x="38" y="16" width="3" height="8" fill="#2a1a0c" opacity=".7"/>
+          </svg>
+          <p class="fine">Prism + weisspack. Softer light, shadows, farther hills. Needs a decent GPU. Only use this if the server is switched to Fabric 26.2.</p>
           <ol>
             <li>Install <a href="https://prismlauncher.org/">Prism Launcher</a></li>
             <li>Sign in as <strong>her</strong></li>
-            <li>Download weisspack below — do not unzip it</li>
-            <li>Add Instance → Import from zip → pick the <code>.mrpack</code></li>
-            <li>Launch that instance once</li>
+            <li>Download weisspack — do not unzip</li>
+            <li>Add Instance → Import from zip → <code>.mrpack</code></li>
           </ol>
           <a class="btn small" href="https://drive.google.com/file/d/13O3n-tnAut6fEWma2rbJkSGRf2JkiATz/view?usp=sharing">Download weisspack</a>
         </div>
